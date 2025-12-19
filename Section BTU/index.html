@@ -1,0 +1,597 @@
+<!doctype html>
+<html lang="ar" dir="rtl">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>BTU</title>
+  <style>
+    
+    :root{
+      --blue-900:#063970; 
+      --blue-700:#0b5ed7;
+      --blue-500:#1976d2;
+      --blue-100:#e8f4ff; 
+      --bg:#ffffff;
+      --muted:#55607a;
+      --radius:14px;
+      --glass: rgba(255,255,255,0.7);
+      --card-shadow: 0 10px 30px rgba(11,94,215,0.06);
+      --max-width:1200px;
+    }
+
+    
+    *{box-sizing:border-box}
+    html,body{height:100%}
+    body{
+      margin:0;font-family:'Cairo',system-ui,-apple-system,'Segoe UI',Roboto,"Helvetica Neue",Arial;
+      background:linear-gradient(180deg,var(--bg),#fbfdff);
+      color:var(--blue-900);-webkit-font-smoothing:antialiased;
+      -moz-osx-font-smoothing:grayscale;line-height:1.45;
+    }
+
+    .container{max-width:var(--max-width);margin:0 auto;padding:0 20px}
+
+    /* Header */
+    header.site-header{position:sticky;top:0;z-index:40;background:rgba(255,255,255,0.85);backdrop-filter:blur(6px);border-bottom:1px solid #eef5ff}
+    .header-inner{display:flex;align-items:center;justify-content:space-between;padding:14px 0}
+    .brand{display:flex;align-items:center;gap:12px}
+    .brand .logo{width:56px;height:56px;border-radius:12px;background:linear-gradient(135deg,var(--blue-700),var(--blue-900));display:flex;align-items:center;justify-content:center;color:#fff;font-weight:900;font-size:20px;box-shadow:var(--card-shadow)}
+    .brand .title{font-weight:800;font-size:18px}
+    nav.top-nav{display:flex;gap:6px;align-items:center}
+    nav.top-nav a{color:var(--blue-700);text-decoration:none;padding:8px 12px;border-radius:10px;font-weight:700}
+    nav.top-nav a:hover{background:var(--blue-100)}
+    .cta{background:var(--blue-700);color:#fff}
+
+    
+    .hero{
+      position:relative;
+      overflow:hidden;
+      border-radius:0 0 20px 20px;
+      margin-bottom:18px;
+      min-height: 500px;
+      display: flex;
+      align-items: center;
+    }
+    
+    /* إزالة الصورة كخلفية واستبدالها بتدرج لوني */
+    .hero-bg {
+      position: absolute;
+      top: 0;
+      right: 0;
+      bottom: 0;
+      left: 0;
+      background: linear-gradient(
+        135deg,
+        rgba(6, 57, 112, 0.95) 0%,
+        rgba(11, 94, 215, 0.85) 50%,
+        rgba(25, 118, 210, 0.8) 100%
+      );
+      z-index: 1;
+      border-radius: 0 0 20px 20px;
+    }
+    
+    /* صورة الجامعة في الجانب */
+    .university-image {
+      position: relative;
+      z-index: 2;
+      flex: 1;
+      max-width: 45%;
+      margin-left: 40px;
+    }
+    
+    .university-image img {
+      width: 100%;
+      height: 400px;
+      object-fit: cover;
+      border-radius: 20px;
+      box-shadow: 0 15px 40px rgba(0,0,0,0.25);
+      border: 5px solid rgba(255,255,255,0.2);
+      transition: all 0.3s ease;
+    }
+    
+    .university-image img:hover {
+      transform: scale(1.02);
+      box-shadow: 0 20px 50px rgba(0,0,0,0.35);
+    }
+    
+    .hero-content-wrapper {
+      position: relative;
+      z-index: 2;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      padding: 40px 0;
+    }
+    
+    .hero-content{
+      flex: 1;
+      color:#fff;
+      text-shadow: 0 2px 8px rgba(0,0,0,0.3);
+      padding-left: 40px;
+    }
+    
+    .eyebrow{
+      display:inline-block;
+      background:rgba(255,255,255,0.15);
+      padding:8px 16px;
+      border-radius:999px;
+      font-weight:700;
+      margin-bottom:14px;
+      backdrop-filter: blur(4px);
+      border: 1px solid rgba(255,255,255,0.1);
+    }
+    
+    .hero h1{
+      margin:0;
+      font-size:52px;
+      line-height:1.1;
+      font-weight:900;
+      letter-spacing:0.4px;
+      background: linear-gradient(135deg, #fff 0%, #e8f4ff 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+    }
+    
+    .hero h2 {
+      margin: 10px 0 20px 0;
+      font-size: 28px;
+      font-weight: 600;
+      color: rgba(255,255,255,0.95);
+      opacity: 0.9;
+    }
+    
+    .hero .lead{
+      margin-top:16px;
+      color:rgba(255,255,255,0.95);
+      font-weight:500;
+      font-size: 18px;
+      line-height: 1.5;
+      max-width: 500px;
+      background: rgba(0,0,0,0.2);
+      padding: 12px 20px;
+      border-radius: 12px;
+      backdrop-filter: blur(4px);
+    }
+    
+    .hero-actions{
+      margin-top:30px;
+      display:flex;
+      gap:16px;
+    }
+    
+    .start-now-btn {
+      display: inline-block;
+      background: linear-gradient(135deg, #00d4ff, #0083b0);
+      color: white;
+      padding: 16px 32px;
+      border-radius: 50px;
+      font-size: 18px;
+      font-weight: 800;
+      text-decoration: none;
+      box-shadow: 0 8px 25px rgba(0, 180, 219, 0.4);
+      transition: all 0.3s ease;
+      border: none;
+      cursor: pointer;
+      position: relative;
+      overflow: hidden;
+      z-index: 1;
+    }
+    
+    .start-now-btn::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 0%;
+      height: 100%;
+      background: linear-gradient(135deg, #0083b0, #00d4ff);
+      transition: width 0.3s ease;
+      z-index: -1;
+    }
+    
+    .start-now-btn:hover::before {
+      width: 100%;
+    }
+    
+    .start-now-btn:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 12px 30px rgba(0, 180, 219, 0.6);
+    }
+    
+    .btn{
+      padding:14px 24px;
+      border-radius:12px;
+      border:0;
+      cursor:pointer;
+      font-weight:800;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .btn.primary{
+      background:linear-gradient(135deg, var(--blue-700), var(--blue-900));
+      color:#fff;
+      box-shadow: 0 4px 15px rgba(11,94,215,0.4);
+    }
+    
+    .btn.primary:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 8px 20px rgba(11,94,215,0.6);
+    }
+    
+    .hero-card{
+      width: 100%;
+      max-width: 400px;
+      background:linear-gradient(180deg, rgba(255,255,255,0.95), rgba(255,255,255,0.98));
+      border-radius:24px;
+      padding:30px;
+      box-shadow: 0 20px 50px rgba(0,0,0,0.15);
+      color:var(--blue-900);
+      backdrop-filter: blur(15px);
+      border: 2px solid rgba(255,255,255,0.3);
+      margin-right: 40px;
+    }
+    
+    .hero-card h4{
+      margin:0 0 20px 0;
+      font-size: 24px;
+      font-weight: 800;
+      color: var(--blue-900);
+      text-align: center;
+    }
+    
+    .nav-links{
+      display:flex;
+      flex-direction:column;
+      gap:15px;
+    }
+    
+    .nav-links a{
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+      padding:18px 20px;
+      border-radius:15px;
+      text-decoration:none;
+      background:linear-gradient(135deg, #f8fbff, #eef6ff);
+      border:2px solid rgba(11,94,215,0.15);
+      color:var(--blue-900);
+      font-weight:700;
+      font-size: 16px;
+      transition: all 0.3s ease;
+    }
+    
+    .nav-links a:hover {
+      transform: translateX(-10px);
+      box-shadow: 0 8px 20px rgba(11,94,215,0.2);
+      border-color: rgba(11,94,215,0.3);
+      background: linear-gradient(135deg, #e8f4ff, #d4eaff);
+    }
+    
+    .nav-links a span.muted {
+      font-size: 14px;
+      font-weight: 500;
+      color: var(--muted);
+    }
+
+    .features{
+      display:grid;
+      grid-template-columns:repeat(1,1fr);
+      gap:20px;
+      margin-top:30px;
+    }
+    
+    @media(min-width:760px){.features{grid-template-columns:repeat(3,1fr)}}
+    
+    .card{
+      background:#fff;
+      border-radius:16px;
+      padding:24px;
+      box-shadow:var(--card-shadow);
+      border:1px solid #f3f8ff;
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+    }
+    
+    .card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 15px 30px rgba(11,94,215,0.12);
+    }
+    
+    .card h3{
+      margin:0 0 12px 0;
+      font-size: 20px;
+      color: var(--blue-900);
+    }
+    
+    .muted{color:var(--muted)}
+
+    section{margin:24px 0}
+    
+    .section-head{
+      display:flex;
+      align-items:center;
+      justify-content:space-between;
+      margin-bottom: 20px;
+    }
+    
+    .section-head h2{
+      margin:0;
+      font-size: 28px;
+      color: var(--blue-900);
+    }
+
+    .courses{
+      display:grid;
+      grid-template-columns:repeat(1,1fr);
+      gap:16px;
+    }
+    
+    @media(min-width:880px){.courses{grid-template-columns:repeat(3,1fr)}}
+    
+    .course{
+      display:flex;
+      gap:16px;
+      align-items:center;
+      transition: transform 0.3s ease;
+    }
+    
+    .course:hover {
+      transform: translateY(-3px);
+    }
+    
+    .course .thumb{
+      width:90px;
+      height:70px;
+      border-radius:10px;
+      flex-shrink:0;
+      object-fit:cover;
+      border: 2px solid #eef6ff;
+    }
+    
+    .course .meta{flex:1}
+    
+    .progress{
+      height:8px;
+      background:#f1f7ff;
+      border-radius:999px;
+      overflow:hidden;
+      margin-top: 10px;
+    }
+    
+    .progress > span{
+      display:block;
+      height:100%;
+      background:linear-gradient(90deg,var(--blue-700),var(--blue-500));
+      border-radius: 999px;
+    }
+
+    footer.site-footer{
+      padding:30px 0;
+      border-top:1px solid #eef5ff;
+      color:var(--muted);
+      font-size:14px;
+      text-align:center;
+      margin-top:50px;
+      background: linear-gradient(180deg, #fbfdff, #f5f9ff);
+    }
+
+    @media(max-width:992px){
+      .hero-content-wrapper {
+        flex-direction: column;
+        gap: 30px;
+      }
+      
+      .university-image {
+        max-width: 80%;
+        margin-left: 0;
+      }
+      
+      .hero-content {
+        padding-left: 0;
+        text-align: center;
+      }
+      
+      .hero-card {
+        margin-right: 0;
+        max-width: 80%;
+      }
+      
+      .nav-links a:hover {
+        transform: translateY(-5px);
+      }
+    }
+    
+    @media(max-width:768px){
+      .hero h1{font-size:36px}
+      .hero h2{font-size:22px}
+      .hero .lead{font-size:16px}
+      .university-image img {
+        height: 300px;
+      }
+    }
+
+    a:focus{outline:3px solid rgba(11,94,215,0.18);outline-offset:3px}
+  </style>
+</head>
+<body>
+
+  <header class="site-header">
+    <div class="container header-inner">
+      <div class="brand">
+        <div class="logo">BTU</div>
+        <div>
+          <div class="title">BTU — المنصة التعليمية</div>
+          <div class="muted" style="font-size:12px">منصة الجامعة  </div>
+        </div>
+      </div>
+
+     
+    </div>
+  </header>
+
+  <section class="hero">
+    <div class="hero-bg"></div>
+    
+    <div class="container">
+      <div class="hero-content-wrapper">
+        <!-- صورة الجامعة في الجانب الأيمن -->
+        <div class="university-image">
+          <img src="univesty-btu.jpg" alt="صورة عامة للجامعة">
+        </div>
+
+        <!-- محتوى الهيرو -->
+        <div class="hero-content">
+          <h1>BTU</h1>
+          <h2>رحلتك التعليمية تبدأ هنا</h2>
+          <p class="lead">BTU Platform — All Your University Services in One Place</p>
+
+          <div class="hero-actions">
+            <button class="start-now-btn" onclick="location.href='../Subjects/Sub-home/subject.html'">ابدأ الآن</button>
+          </div>
+        </div>
+
+        <!-- بطاقة الوصول السريع -->
+        <aside class="hero-card">
+          <h4>وصول سريع</h4>
+          <div class="nav-links">
+            <a href="#subjects">📚 المواد <span class="muted">استعرض كل المواد</span></a>
+            <a href="#quizzes">📝 كويزات <span class="muted">اختبارات سريعة</span></a>
+            <a href="#grades">📊 درجات <span class="muted"> درجاتك</span></a>
+            <a href="#about">ℹ حول <span class="muted">عن المنصة</span></a>
+          </div>
+        </aside>
+      </div>
+    </div>
+  </section>
+
+  <main class="container">
+
+    <div class="features">
+      <div class="card">
+        <h3>منهج رقمي مرتب</h3>
+        <p class="muted">الملفات الخاصة بكل مادة في مكان واحد.</p>
+      </div>
+      <div class="card">
+        <h3>كويزات تفاعلية</h3>
+        <p class="muted">اختبارات قصيرة مع تقييم فوري لتتبع تقدمك.</p>
+      </div>
+      <div class="card">
+        <h3> درجات</h3>
+        <p class="muted">الدرجات النهائية وتقييمات للأداء.</p>
+      </div>
+    </div>
+
+    <section id="subjects">
+      <div class="section-head">
+        <h2>المواد</h2>
+        <a href="#" style="text-decoration:none;font-weight:800;color:var(--blue-700)">عرض كل المواد ⟶</a>
+      </div>
+
+      <div class="courses" style="margin-top:12px">
+        <article class="course card">
+          <img class="thumb" src="https://th.bing.com/th/id/R.a41fbcee203133fe66306b7ec03fa772?rik=F6yVXgd5%2bolc%2fg&riu=http%3a%2f%2f3.bp.blogspot.com%2f-wjP6RpVjR2Q%2fVgiUq8PKU3I%2fAAAAAAAAACU%2fs-zCJ98AHsE%2fs1600%2foperating-system-wallpaper.jpg&ehk=ZbOn4UO0%2fsGR1B%2bbNOEnagim60X%2bdDxgeLWVZDjhHQs%3d&risl=&pid=ImgRaw&r=0" alt="مادة">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-weight:800">Operating System</div>
+            </div>
+            <p class="muted" style="margin:8px 0">محاضرات مسجلة، ملاحظات، وملفات PDF.</p>
+            <div class="progress" aria-hidden="true"><span style="width:47%"></span></div>
+          </div>
+        </article>
+
+        <article class="course card">
+          <img class="thumb" src="https://images.unsplash.com/photo-1522202176988-66273c2fd55f?q=80&w=800&auto=format&fit=crop" alt="مادة">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-weight:800">Digital Engineering</div>
+            </div>
+            <div class="progress" aria-hidden="true"><span style="width:28%"></span></div>
+          </div>
+        </article>
+
+        <article class="course card">
+          <img class="thumb" src="https://images.unsplash.com/photo-1519389950473-47ba0277781c?q=80&w=800&auto=format&fit=crop" alt="مادة">
+          <div class="meta">
+            <div style="display:flex;justify-content:space-between;align-items:center">
+              <div style="font-weight:800">Linux</div>
+            </div>
+            <div class="progress" aria-hidden="true"><span style="width:62%"></span></div>
+          </div>
+        </article>
+      </div>
+    </section>
+
+    <section id="quizzes">
+      <div class="section-head">
+        <h2>الكويزات</h2>
+        <a href="#" style="text-decoration:none;font-weight:800;color:var(--blue-700)">كل الكويزات ⟶</a>
+      </div>
+
+      <div style="display:grid;grid-template-columns:repeat(1,1fr);gap:12px;margin-top:12px">
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:800">Database</div>
+              <div class="muted" style="font-size:13px">مدة 15 دقيقة — مستوى متوسط</div>
+            </div>
+            <button class="btn primary" onclick="startQuiz('quiz-1')">Start</button>
+          </div>
+        </div>
+
+        <div class="card">
+          <div style="display:flex;justify-content:space-between;align-items:center">
+            <div>
+              <div style="font-weight:800">Web Programming</div>
+              <div class="muted" style="font-size:13px">مدة 10 دقيقة — مستوى سهل</div>
+            </div>
+            <button class="btn primary" onclick="startQuiz('quiz-2')">Start</button>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="grades">
+      <div class="section-head">
+        <h2>درجاتك</h2>
+        <a href="#" style="text-decoration:none;font-weight:800;color:var(--blue-700)"> عرض كل الدرجات ⟶</a>
+      </div>
+
+      <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:12px">
+        <div class="card" style="flex:1;min-width:260px">
+          <h3>المجموع العام</h3>
+          <div style="font-size:28px;font-weight:900;margin-top:8px">0%</div>
+          <p class="muted" style="margin-top:6px">أداء عام في الفصل الحالي</p>
+        </div>
+
+        <div class="card" style="flex:1;min-width:260px">
+          <h3>آخر كويزات</h3>
+          <ul style="margin:8px 0 0 0;padding:0;list-style:none">
+            <li style="padding:6px 0;border-bottom:1px dashed #eef6ff">Operating System — 0%</li>
+            <li style="padding:6px 0;border-bottom:1px dashed #eef6ff">Linux — 0%</li>
+            <li style="padding:6px 0"> C++ — 0%</li>
+          </ul>
+        </div>
+      </div>
+    </section>
+
+  </main>
+
+  <footer class="site-footer">
+    <div class="container">
+      © 2025 BTU — جميع الحقوق محفوظة 
+    </div>
+  </footer>
+
+  <script>
+    function startQuiz(id){
+      alert('جاري فتح الكويز: ' + id + '\n(نموذج تجريبي يمكن استبداله بواجهة فعلية)');
+    }
+
+    document.querySelectorAll('nav.top-nav a').forEach(a=>a.addEventListener('keydown', e=>{
+      if(e.key === 'Enter') a.click();
+    }));
+  </script>
+</body>
+</html>

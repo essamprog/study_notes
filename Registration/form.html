@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <title>University Registration</title>
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-family: Arial, sans-serif;
+            background: linear-gradient(120deg, #9ec9ff, #e8f1ff, #7fb0ff);
+        }
+
+        .form-box {
+            background: #fff;
+            width: 350px;
+            padding: 25px;
+            border-radius: 15px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        .form-box h2 {
+            text-align: center;
+            color: #2c5fd5;
+            margin-bottom: 20px;
+        }
+
+        label {
+            font-size: 14px;
+            color: #333;
+        }
+
+        input,
+        select {
+            width: 100%;
+            padding: 10px;
+            margin: 6px 0 15px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+        }
+
+        button {
+            width: 100%;
+            padding: 12px;
+            border: none;
+            border-radius: 10px;
+            background: #2c5fd5;
+            color: #fff;
+            font-size: 16px;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background: #224bb8;
+        }
+    </style>
+</head>
+
+<body>
+    <form action="">
+        <div class="form-box">
+            <h2>University Registration</h2>
+
+            <label>Full Name</label>
+            <input type="text" placeholder="Enter your name" required>
+
+            <label>Student ID</label>
+            <input type="text" placeholder="Enter student ID" required>
+
+            <label>Email</label>
+            <input type="email" placeholder="example@university.edu" required>
+
+            <label>Faculty</label>
+            <select>
+                <option>Select Faculty</option>
+                <option>Engineering</option>
+                <option>Science</option>
+                <option>Commerce</option>
+            </select>
+
+            <label>Academic Level</label>
+            <select>
+                <option>Select Level</option>
+                <option>Level 1</option>
+                <option>Level 2</option>
+                <option>Level 3</option>
+                <option>Level 4</option>
+            </select>
+
+            <a href="../Section BTU/index.html">
+                <button type="button">Register</button>
+            </a>
+        </div>
+    </form>
+
+
+</body>
+
+</html>

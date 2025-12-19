@@ -1,0 +1,712 @@
+[
+  {
+    "question": "Display all files, including hidden ones, in long listing format.",
+    "choices": [
+      "ls -la",
+      "ls -h",
+      "show -all",
+      "dir --all"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Show your current working directory.",
+    "choices": [
+      "pwd",
+      "showdir",
+      "whereami",
+      "curdir"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change your directory to /home/student/Documents using an absolute path.",
+    "choices": [
+      "cd /home/student/Documents",
+      "goto Documents",
+      "cd Documents",
+      "path /home/student"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Move from the current directory to its parent directory.",
+    "choices": [
+      "cd ..",
+      "cd /",
+      "cd ../..",
+      "cd parent"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Navigate to your home directory using a shortcut.",
+    "choices": [
+      "cd ~",
+      "cd /home",
+      "cd home",
+      "cd user"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display files in reverse alphabetical order.",
+    "choices": [
+      "ls -r",
+      "ls -rev",
+      "ls --reverse-alpha",
+      "list -ra"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Combine multiple options to display a long listing sorted in reverse.",
+    "choices": [
+      "ls -lr",
+      "ls -alr",
+      "ls reverse long",
+      "dir -lr"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change directory to the root / directory.",
+    "choices": [
+      "cd /",
+      "goto /root",
+      "cd root",
+      "/"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change directory to a folder named projects using a relative path.",
+    "choices": [
+      "cd projects",
+      "go projects",
+      "path projects",
+      "dir projects"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Navigate from /home/student/Documents/Projects/School/Work to /home/student/Documents/Art using a relative path.",
+    "choices": [
+      "cd ../../../Art",
+      "cd ../../../../Art",
+      "cd ../Art",
+      "cd /Art"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "List all files in /Documents/Books sorted by timestamp and in details.",
+    "choices": [
+      "ls -lt /Documents/Books",
+      "ls -S /Documents/Books",
+      "show /Documents/Books -t",
+      "dir -time /Documents/Books"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "List all hidden files in the current directory.",
+    "choices": [
+      "ls -a",
+      "ls hidden",
+      "dir --hidden",
+      "show .files"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "List files in reverse timestamp order and in details.",
+    "choices": [
+      "ls -ltr",
+      "ls -rt",
+      "ls -tR",
+      "dir -tr"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Attempt to enter the /root directory. What is the expected output?",
+    "choices": [
+      "Permission denied",
+      "Directory not found",
+      "Command not recognized",
+      "System halted"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Update the system using administrative privileges.",
+    "choices": [
+      "sudo apt update",
+      "update system now",
+      "sys upgrade full",
+      "apt upgrade all"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Switch to the root user.",
+    "choices": [
+      "sudo su",
+      "login root",
+      "rootmode",
+      "su -admin"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Exit the root shell.",
+    "choices": [
+      "exit",
+      "quit",
+      "logout",
+      "leave"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Write a command that contains a comment.",
+    "choices": [
+      "ls -l #Comment",
+      "ls --comment=example",
+      "showlist #",
+      "cmd /comment"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display only the last 10 commands from your command history.",
+    "choices": [
+      "history 10",
+      "lastcmd -10",
+      "history -last 10",
+      "cmdhist 10"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Clear your entire command history.",
+    "choices": [
+      "history -c",
+      "clear history -all",
+      "rm .history",
+      "reset history"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Create a new file called do.txt.",
+    "choices": [
+      "touch do.txt",
+      "newfile do.txt",
+      "mkfile do.txt",
+      "file -create do.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display the permissions of do.txt.",
+    "choices": [
+      "ls -l do.txt",
+      "showperm do.txt",
+      "fileperm do.txt",
+      "getperm do.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Add write permission for others on do.txt.",
+    "choices": [
+      "chmod o+w do.txt",
+      "perm add write others do.txt",
+      "chperm do.txt +o",
+      "openperm do.txt write"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Remove write permission from the group for do.txt.",
+    "choices": [
+      "chmod g-w do.txt",
+      "perm -g do.txt",
+      "chmod rm gwrite do.txt",
+      "unsetperm group do.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Add write permission for both group and others on do.txt.",
+    "choices": [
+      "chmod go+w do.txt",
+      "chmod +write do.txt",
+      "addperm do.txt go",
+      "setperm go=write"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Give the owner all permissions using octal notation.",
+    "choices": [
+      "chmod 700 do.txt",
+      "chmod 111 do.txt",
+      "chmod full do.txt",
+      "chmod 070 do.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Give user, group, and others full permissions using octal notation.",
+    "choices": [
+      "chmod 777 do.txt",
+      "chmod 999 do.txt",
+      "chmod all do.txt",
+      "chmod fullaccess"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change the owner of do.txt to root.",
+    "choices": [
+      "sudo chown root do.txt",
+      "owner root do.txt",
+      "chperm root do.txt",
+      "sudo own root do.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change the group owner of do.txt to a group named staff.",
+    "choices": [
+      "sudo chgrp staff do.txt",
+      "group set staff do.txt",
+      "sudo group staff do.txt",
+      "setgrp do.txt staff"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change both owner and group of do.txt to master:team.",
+    "choices": [
+      "sudo chown master:team do.txt",
+      "sudo own master.team do.txt",
+      "set owner master team",
+      "change master/team do.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Change the owner and group of file1 and file2 at once.",
+    "choices": [
+      "sudo chown master:team file1 file2",
+      "sudo owner file1 file2",
+      "chgrp all file1 file2",
+      "sudo own files master team"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Create FileNew.txt with the text 'Welcome to Linux'.",
+    "choices": [
+      "echo \"Welcome to Linux\" > FileNew.txt",
+      "write FileNew.txt Welcome to Linux",
+      "filemake -t FileNew.txt",
+      "touch FileNew.txt -add Welcome"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display the entire content of FileNew.txt.",
+    "choices": [
+      "cat FileNew.txt",
+      "show FileNew.txt",
+      "open FileNew.txt",
+      "display FileNew.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Show the first 7 lines of report.txt.",
+    "choices": [
+      "head -n 7 report.txt",
+      "first 7 report.txt",
+      "showtop 7 report.txt",
+      "cat -top7 report.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Show the last 5 lines of log.txt.",
+    "choices": [
+      "tail -n 5 log.txt",
+      "log -last 5",
+      "cat -end5 log.txt",
+      "readlast log.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "View a large file bigfile.txt one page at a time.",
+    "choices": [
+      "more bigfile.txt",
+      "view bigfile.txt",
+      "open bigfile.txt --page",
+      "scroll bigfile.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Append the text 'Hello again' to output.txt.",
+    "choices": [
+      "echo \"Hello again\" >> output.txt",
+      "write append output.txt Hello again",
+      "addline Hello again output.txt",
+      "update append output.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Overwrite the content of output.txt with 'New content'.",
+    "choices": [
+      "echo \"New content\" > output.txt",
+      "replace output.txt New content",
+      "overwrite output.txt",
+      "write output.txt New content --force"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Use echo with -e to print two lines using \\n.",
+    "choices": [
+      "echo -e \"Line1\\nLine2\"",
+      "echo \"Line1 Line2\"",
+      "echo -newline Line1 Line2",
+      "echo lines Line1 Line2"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display all system information.",
+    "choices": [
+      "uname -a",
+      "systeminfo",
+      "fullsys",
+      "sysinfo --all"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display the kernel name.",
+    "choices": [
+      "uname -s",
+      "kernel show",
+      "sys kernel",
+      "os -kernel"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display the hostname.",
+    "choices": [
+      "hostname",
+      "uname -h",
+      "sysname",
+      "gethost"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display the machine hardware name.",
+    "choices": [
+      "uname -m",
+      "sys -m",
+      "hardware --name",
+      "machine info"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Copy sara.txt to the Music directory.",
+    "choices": [
+      "cp sara.txt Music",
+      "copy sara.txt Music",
+      "cp ~/Music sara.txt",
+      "cp -move sara.txt Music"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Copy Sfile.txt and Dfile.txt to the Desktop directory.",
+    "choices": [
+      "cp Sfile.txt Dfile.txt Desktop",
+      "copy both ~/Desktop",
+      "duplicate files Desktop",
+      "cp files Desktop"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Copy Sfile.txt from Documents to Music with a new name Dfile.txt.",
+    "choices": [
+      "cp Documents/Sfile.txt Music/Dfile.txt",
+      "cp rename Sfile.txt Dfile.txt",
+      "copy Sfile.txt to Music new Dfile",
+      "cp ~/Music/Sfile.txt ~/Documents/Dfile.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Copy the entire Desk_folder to Downloads.",
+    "choices": [
+      "cp -r Desk_folder Downloads",
+      "copy all Desk_folder Downloads",
+      "cp Desk_folder",
+      "copy-r Desk_folder"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Copy all .txt files to the backup directory.",
+    "choices": [
+      "cp *.txt Books",
+      "copy *.txt backup",
+      "move *.txt backup",
+      "cp txt backup"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Move Sfile.txt to the Music directory.",
+    "choices": [
+      "mv Sfile.txt Music",
+      "move Sfile.txt Music",
+      "mv ~/Music Sfile.txt",
+      "shift Sfile.txt Music"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Rename Dfile.txt to Mor.txt while moving it to Music.",
+    "choices": [
+      "mv Dfile.txt Music/Mor.txt",
+      "rename Dfile.txt Mor.txt Music",
+      "mv Mor.txt ~/Music/Dfile.txt",
+      "move Mor.txt ~/Music/Dfile.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Move Desk_folder to Music.",
+    "choices": [
+      "mv Desk_folder Music",
+      "move Desk_folder Music",
+      "mv Music Desk_folder",
+      "shift Desk_folder Music"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Move files b.txt and c.txt to Videos.",
+    "choices": [
+      "mv b.txt c.txt Videos",
+      "move b.txt,c.txt Videos",
+      "mv *.txt Videos",
+      "shift b.txt c.txt Videos"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Delete old.txt.",
+    "choices": [
+      "rm old.txt",
+      "delete old.txt",
+      "remove old.txt",
+      "del old.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Delete the pubfold directory with all its contents.",
+    "choices": [
+      "rm -r pubfold",
+      "delete pubfold *",
+      "remove pubfold -all",
+      "rm pubfold"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Create a new directory workspace.",
+    "choices": [
+      "mkdir -p workspace/projects",
+      "newdir workspace",
+      "folder create workspace",
+      "mk workspace"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Search for the word 'command' in notes.txt.",
+    "choices": [
+      "grep command notes.txt",
+      "find command notes.txt",
+      "search command notes.txt",
+      "lookup command notes.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Search for the word 'unix' ignoring case.",
+    "choices": [
+      "grep -i unix notes.txt",
+      "grep unix notes.txt",
+      "find -case unix notes.txt",
+      "search unix -ignore-case"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display only the count of lines that contain 'Linux'.",
+    "choices": [
+      "grep -c Linux notes.txt",
+      "count Linux notes.txt",
+      "grep Linux | wc",
+      "grep -n Linux"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display lines that do not contain the word 'error'.",
+    "choices": [
+      "grep -v error notes.txt",
+      "grep -not error notes.txt",
+      "find !error notes.txt",
+      "search -v error notes.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Search for the whole word 'system'.",
+    "choices": [
+      "grep -w system notes.txt",
+      "grep system notes.txt",
+      "find system -full",
+      "grep -exact system notes.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display only the matched pattern 'user' from info.txt.",
+    "choices": [
+      "grep -o user info.txt",
+      "grep user info.txt",
+      "find user info.txt",
+      "show user info.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Show line numbers for matches of 'root'.",
+    "choices": [
+      "grep -n root notes.txt",
+      "grep root -lines notes.txt",
+      "find root -n notes.txt",
+      "search root numbers"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Find lines starting with A.",
+    "choices": [
+      "grep ^A notes.txt",
+      "grep start A notes.txt",
+      "find ^A notes.txt",
+      "grep begins A notes.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Find lines ending with .log.",
+    "choices": [
+      "grep .log$ notes.txt",
+      "grep log-end notes.txt",
+      "find .log end notes.txt",
+      "grep finish log notes.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Search for any digit in profile.txt.",
+    "choices": [
+      "grep [0-9] profile.txt",
+      "find digit profile.txt",
+      "grep numbers profile.txt",
+      "search 0-9 profile.txt"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display hidden files and directories in a tree view.",
+    "choices": [
+      "tree -a",
+      "tree --hidden",
+      "tree .files",
+      "tree -h"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display a tree view with file sizes.",
+    "choices": [
+      "tree -s",
+      "tree -size",
+      "tree --full",
+      "tree -list"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display the last 10 executed commands.",
+    "choices": [
+      "history 10",
+      "cmd -last 10",
+      "show history last10",
+      "history -final"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Clear all command history.",
+    "choices": [
+      "history -c",
+      "reset history",
+      "delete history",
+      "clear -hist"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Display the current date and time.",
+    "choices": [
+      "date",
+      "time",
+      "now",
+      "clock"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Show the calendar for February 2025.",
+    "choices": [
+      "cal 2 2025",
+      "calendar feb 2025",
+      "showcal 02-2025",
+      "cal 2025 2"
+    ],
+    "answer": 0
+  }
+]

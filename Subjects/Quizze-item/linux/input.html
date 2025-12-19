@@ -1,0 +1,533 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Input Quiz Master</title>
+    <style>
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 750px;
+            width: 100%;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { color: #667eea; font-size: 2.5em; margin-bottom: 10px; }
+
+        .header-buttons {
+            display: flex;
+            gap: 10px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .restart-btn, .shuffle-btn {
+            background: #dc3545; color: white; border: none; padding: 10px 20px;
+            border-radius: 25px; cursor: pointer; transition: all 0.3s ease;
+            font-weight: 500; font-size: 0.9em;
+        }
+        
+        .shuffle-btn {
+            background: #28a745;
+        }
+        
+        .restart-btn:hover { background: #c82333; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4); }
+        .shuffle-btn:hover { background: #218838; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(40, 167, 69, 0.4); }
+
+        .timer-progress-wrapper {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 30px; flex-wrap: wrap; gap: 15px;
+        }
+        
+        .stat-badge {
+            background: #f0f0f0; padding: 10px 20px; border-radius: 25px;
+            font-weight: bold; color: #667eea; font-size: 1.1em;
+        }
+        
+        .score-badge {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333; box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        .question-container { animation: slideIn 0.4s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+        .question-label { font-size: 0.9em; color: #888; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .main-question {
+            font-size: 1.5em; color: #333; margin-bottom: 25px; font-weight: 600;
+            background: #f8f9fa; border-left: 5px solid #667eea; padding: 20px;
+            border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        .input-section {
+            margin-bottom: 25px;
+        }
+
+        .answer-input {
+            width: 100%; padding: 15px; font-size: 1.2em; border: 3px solid #e0e0e0;
+            border-radius: 10px; transition: all 0.3s ease; font-family: inherit;
+        }
+
+        .answer-input:focus {
+            outline: none; border-color: #667eea; box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        .answer-input:disabled {
+            background: #f5f5f5; cursor: not-allowed;
+        }
+
+        .answer-input.correct {
+            background: #e8f5e9; border-color: #4caf50; color: #2e7d32;
+        }
+
+        .answer-input.wrong {
+            background: #ffebee; border-color: #f44336; color: #c62828;
+        }
+
+        .check-btn {
+            width: 100%; background: #667eea; color: white; border: none;
+            padding: 15px; border-radius: 10px; font-size: 1.2em; font-weight: bold;
+            cursor: pointer; transition: all 0.3s ease; margin-top: 15px;
+        }
+
+        .check-btn:hover:not(:disabled) {
+            background: #5568d3; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.4);
+        }
+
+        .check-btn:disabled {
+            background: #ccc; cursor: not-allowed; opacity: 0.6;
+        }
+
+        .feedback { 
+            margin-top: 20px; padding: 15px; border-radius: 10px; 
+            text-align: center; font-weight: bold; font-size: 1.1em;
+        }
+        
+        .feedback.success { background: #e8f5e9; color: #2e7d32; }
+        .feedback.error { background: #ffebee; color: #c62828; }
+        .feedback.info { background: #e3f2fd; color: #1565c0; }
+
+        .correct-answer-display {
+            margin-top: 15px; padding: 15px; background: #fff3cd; 
+            border-left: 4px solid #ffc107; border-radius: 8px;
+            color: #856404; font-weight: bold;
+        }
+
+        .navigation-buttons { 
+            display: flex; justify-content: space-between; gap: 15px; margin-top: 25px; 
+        }
+        
+        .nav-btn {
+            background: #667eea; color: white; border: none; padding: 12px 30px;
+            border-radius: 25px; font-size: 1.1em; cursor: pointer; 
+            transition: all 0.3s ease; flex: 1;
+        }
+        
+        .nav-btn:hover:not(:disabled) { background: #5568d3; transform: translateY(-2px); }
+        .nav-btn:disabled { background: #ccc; cursor: not-allowed; opacity: 0.6; }
+        .nav-btn.prev-btn { background: #6c757d; }
+        .nav-btn.prev-btn:hover:not(:disabled) { background: #5a6268; }
+
+        .results-container { text-align: center; display: none; }
+        .score-display { font-size: 4em; color: #667eea; font-weight: bold; margin: 20px 0; }
+        .results-stats { background: #f8f9fa; padding: 25px; border-radius: 15px; margin: 25px 0; }
+        .stat-item { 
+            display: flex; justify-content: space-between; padding: 12px 0; 
+            border-bottom: 1px solid #e0e0e0; font-size: 1.2em; 
+        }
+        .stat-item:last-child { border-bottom: none; }
+        
+        .play-again-btn { 
+            background: #667eea; color: white; border: none; padding: 15px 40px; 
+            border-radius: 25px; font-size: 1.2em; cursor: pointer; 
+            transition: all 0.3s ease; 
+        }
+        .play-again-btn:hover { background: #5568d3; transform: translateY(-2px); }
+
+        .hidden { display: none; }
+        .loading, .error-message { text-align: center; padding: 30px; font-size: 1.2em; }
+        .error-message { color: #c62828; background: #ffebee; border-radius: 10px; }
+
+        .attempts-info {
+            font-size: 0.9em; color: #666; margin-top: 10px; text-align: center;
+        }
+
+        @keyframes shake { 
+            0%, 100% { transform: translateX(0); } 
+            25% { transform: translateX(-10px); } 
+            75% { transform: translateX(10px); } 
+        }
+
+        .shake { animation: shake 0.5s ease; }
+
+        @media (max-width: 600px) {
+            .container { padding: 25px; }
+            .header h1 { font-size: 2em; }
+            .timer-progress-wrapper { flex-direction: column; align-items: stretch; text-align: center; }
+            .main-question { font-size: 1.2em; }
+            .answer-input { font-size: 1em; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>🎯 Input Quiz Master</h1>
+            <div class="header-buttons hidden" id="headerButtons">
+                <button class="restart-btn" id="restartBtn" onclick="startOver()">🔄 Restart</button>
+                <button class="shuffle-btn" id="shuffleBtn" onclick="toggleShuffle()">🔀 Shuffle: <span id="shuffleStatus">On</span></button>
+            </div>
+        </div>
+
+        <div id="loading" class="loading">Loading questions...</div>
+        <div id="error" class="error-message hidden"></div>
+
+        <div id="quizContainer" class="hidden">
+            <div class="timer-progress-wrapper">
+                <div class="stat-badge">⏱️ <span id="timer">00:00</span></div>
+                <div class="stat-badge score-badge">🏆 Score: <span id="correctCount">0</span></div>
+                <div class="stat-badge">Question <span id="currentQ">1</span> of <span id="totalQ">0</span></div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-label">Question:</div>
+                <div class="main-question" id="questionText"></div>
+
+                <div class="input-section">
+                    <input 
+                        type="text" 
+                        class="answer-input" 
+                        id="answerInput" 
+                        placeholder="Type your answer here..."
+                        autocomplete="off"
+                    >
+                    <div class="attempts-info" id="attemptsInfo"></div>
+                    <button class="check-btn" id="checkBtn" onclick="checkAnswer()">✓ Check Answer</button>
+                </div>
+
+                <div id="feedback" class="feedback hidden"></div>
+                <div id="correctAnswerDisplay" class="correct-answer-display hidden"></div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" id="prevBtn" onclick="prevQuestion()">⏮️ Previous</button>
+                    <button class="nav-btn next-btn" id="nextBtn" onclick="nextQuestion()">Next ⏭️</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsContainer" class="results-container">
+            <h2>🎉 Quiz Complete!</h2>
+            <div class="score-display" id="finalScore">0/0</div>
+            
+            <div class="results-stats">
+                <div class="stat-item">
+                    <span>⏱️ Total Time:</span>
+                    <span id="totalTime" style="color:#667eea; font-weight:bold;">00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span>✅ Correct Answers:</span>
+                    <span id="finalCorrect" style="color:#667eea; font-weight:bold;">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>📝 Total Questions:</span>
+                    <span id="finalTotal" style="color:#667eea; font-weight:bold;">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>🎯 Accuracy:</span>
+                    <span id="accuracy" style="color:#667eea; font-weight:bold;">0%</span>
+                </div>
+            </div>
+            
+            <button class="play-again-btn" onclick="restartQuiz()">🔄 Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        const state = {
+            questions: [],
+            currentIndex: 0,
+            score: 0,
+            correctCount: 0,
+            startTime: null,
+            timerInterval: null,
+            answers: {},
+            answered: {},
+            attempts: {},
+            shuffleEnabled: true
+        };
+
+        const els = {
+            loading: document.getElementById('loading'),
+            error: document.getElementById('error'),
+            quizContainer: document.getElementById('quizContainer'),
+            resultsContainer: document.getElementById('resultsContainer'),
+            headerButtons: document.getElementById('headerButtons'),
+            restartBtn: document.getElementById('restartBtn'),
+            shuffleBtn: document.getElementById('shuffleBtn'),
+            shuffleStatus: document.getElementById('shuffleStatus'),
+            timer: document.getElementById('timer'),
+            currentQ: document.getElementById('currentQ'),
+            totalQ: document.getElementById('totalQ'),
+            correctCount: document.getElementById('correctCount'),
+            questionText: document.getElementById('questionText'),
+            answerInput: document.getElementById('answerInput'),
+            attemptsInfo: document.getElementById('attemptsInfo'),
+            checkBtn: document.getElementById('checkBtn'),
+            feedback: document.getElementById('feedback'),
+            correctAnswerDisplay: document.getElementById('correctAnswerDisplay'),
+            prevBtn: document.getElementById('prevBtn'),
+            nextBtn: document.getElementById('nextBtn')
+        };
+
+        async function init() {
+            try {
+                const res = await fetch('data.json');
+                if (!res.ok) throw new Error('فشل في تحميل الأسئلة');
+                const data = await res.json();
+                state.questions = Array.isArray(data) ? data : (data.questions || []);
+                if (!state.questions.length) throw new Error('لم يتم العثور على أسئلة');
+                
+                if (state.shuffleEnabled) {
+                    shuffleQuestions();
+                }
+                
+                startQuiz();
+            } catch(err) {
+                showError('خطأ: ' + err.message + '. تأكد من وجود ملف data.json.');
+            }
+        }
+
+        function shuffleQuestions() {
+            for(let i = state.questions.length - 1; i > 0; i--) {
+                const j = Math.floor(Math.random() * (i + 1));
+                [state.questions[i], state.questions[j]] = [state.questions[j], state.questions[i]];
+            }
+        }
+
+        function toggleShuffle() {
+            state.shuffleEnabled = !state.shuffleEnabled;
+            els.shuffleStatus.textContent = state.shuffleEnabled ? 'مفعّل' : 'معطّل';
+            localStorage.setItem('shuffleEnabled', state.shuffleEnabled);
+        }
+
+        function showError(msg) {
+            els.loading.classList.add('hidden');
+            els.error.textContent = msg;
+            els.error.classList.remove('hidden');
+        }
+
+        function startQuiz() {
+            els.loading.classList.add('hidden');
+            els.quizContainer.classList.remove('hidden');
+            els.headerButtons.classList.remove('hidden');
+            els.totalQ.textContent = state.questions.length;
+            state.startTime = Date.now();
+            startTimer();
+            
+            // Load shuffle preference
+            const savedShuffle = localStorage.getItem('shuffleEnabled');
+            if (savedShuffle !== null) {
+                state.shuffleEnabled = savedShuffle === 'true';
+                els.shuffleStatus.textContent = state.shuffleEnabled ? 'مفعّل' : 'معطّل';
+            }
+            
+            displayQuestion();
+        }
+
+        function startTimer() {
+            state.timerInterval = setInterval(() => {
+                const elapsed = Date.now() - state.startTime;
+                const mins = Math.floor(elapsed / 60000);
+                const secs = Math.floor((elapsed % 60000) / 1000);
+                els.timer.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+            }, 1000);
+        }
+
+        function displayQuestion() {
+            const q = state.questions[state.currentIndex];
+            els.currentQ.textContent = state.currentIndex + 1;
+            els.questionText.textContent = q.question;
+            
+            els.answerInput.value = '';
+            els.answerInput.className = 'answer-input';
+            els.answerInput.disabled = false;
+            els.checkBtn.disabled = false;
+            els.feedback.classList.add('hidden');
+            els.correctAnswerDisplay.classList.add('hidden');
+            els.attemptsInfo.textContent = '';
+
+            if (!state.attempts[state.currentIndex]) {
+                state.attempts[state.currentIndex] = 0;
+            }
+
+            if (state.answered[state.currentIndex]) {
+                const ans = state.answers[state.currentIndex];
+                els.answerInput.value = ans.userAnswer;
+                els.answerInput.className = `answer-input ${ans.correct ? 'correct' : 'wrong'}`;
+                els.answerInput.disabled = true;
+                els.checkBtn.disabled = true;
+                
+                if (ans.correct) {
+                    showFeedback('✅ إجابة صحيحة!', 'success');
+                } else {
+                    showFeedback('❌ إجابة خاطئة', 'error');
+                    els.correctAnswerDisplay.textContent = `الإجابة الصحيحة: ${ans.correctAnswer}`;
+                    els.correctAnswerDisplay.classList.remove('hidden');
+                }
+            }
+
+            updateNav();
+            updateCounter();
+            els.answerInput.focus();
+        }
+
+        function checkAnswer() {
+            if (state.answered[state.currentIndex]) return;
+            
+            const q = state.questions[state.currentIndex];
+            const userAnswer = els.answerInput.value.trim();
+            
+            if (!userAnswer) {
+                els.answerInput.classList.add('shake');
+                setTimeout(() => els.answerInput.classList.remove('shake'), 500);
+                showFeedback('⚠️ الرجاء كتابة إجابة', 'info');
+                return;
+            }
+
+            const correctAnswer = q.choices[q.answer];
+            const isCorrect = userAnswer.toLowerCase() === correctAnswer.toLowerCase();
+            
+            state.attempts[state.currentIndex]++;
+
+            if (isCorrect) {
+                els.answerInput.className = 'answer-input correct';
+                els.answerInput.disabled = true;
+                els.checkBtn.disabled = true;
+                state.score++;
+                state.correctCount++;
+                showFeedback('✅ إجابة صحيحة! ممتاز!', 'success');
+                
+                state.answers[state.currentIndex] = {
+                    userAnswer,
+                    correct: true,
+                    correctAnswer
+                };
+                state.answered[state.currentIndex] = true;
+            } else {
+                if (state.attempts[state.currentIndex] >= 2) {
+                    els.answerInput.className = 'answer-input wrong';
+                    els.answerInput.disabled = true;
+                    els.checkBtn.disabled = true;
+                    showFeedback('❌ إجابة خاطئة', 'error');
+                    els.correctAnswerDisplay.textContent = `الإجابة الصحيحة: ${correctAnswer}`;
+                    els.correctAnswerDisplay.classList.remove('hidden');
+                    
+                    state.answers[state.currentIndex] = {
+                        userAnswer,
+                        correct: false,
+                        correctAnswer
+                    };
+                    state.answered[state.currentIndex] = true;
+                } else {
+                    els.answerInput.classList.add('shake');
+                    setTimeout(() => els.answerInput.classList.remove('shake'), 500);
+                    showFeedback('❌ إجابة خاطئة، حاول مرة أخرى!', 'error');
+                    els.attemptsInfo.textContent = `المحاولة ${state.attempts[state.currentIndex]} من 2`;
+                    els.answerInput.select();
+                }
+            }
+
+            updateNav();
+            updateCounter();
+        }
+
+        els.answerInput.addEventListener('keypress', (e) => {
+            if (e.key === 'Enter' && !els.checkBtn.disabled) {
+                checkAnswer();
+            }
+        });
+
+        function showFeedback(msg, type) {
+            els.feedback.textContent = msg;
+            els.feedback.className = `feedback ${type}`;
+            els.feedback.classList.remove('hidden');
+        }
+
+        function updateNav() {
+            els.prevBtn.disabled = state.currentIndex === 0;
+            const isAnswered = state.answered[state.currentIndex];
+            els.nextBtn.disabled = !isAnswered;
+            els.nextBtn.textContent = state.currentIndex === state.questions.length - 1 ? 'إنهاء الاختبار ✅' : 'التالي ⏭️';
+        }
+
+        function updateCounter() {
+            els.correctCount.textContent = state.correctCount;
+        }
+
+        function nextQuestion() {
+            if (state.currentIndex < state.questions.length - 1) {
+                state.currentIndex++;
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion() {
+            if (state.currentIndex > 0) {
+                state.currentIndex--;
+                displayQuestion();
+            }
+        }
+
+        function showResults() {
+            clearInterval(state.timerInterval);
+            els.quizContainer.classList.add('hidden');
+            els.resultsContainer.style.display = 'block';
+            els.headerButtons.classList.add('hidden');
+
+            const elapsed = Date.now() - state.startTime;
+            const mins = Math.floor(elapsed / 60000);
+            const secs = Math.floor((elapsed % 60000) / 1000);
+            const accuracy = state.questions.length > 0 ? 
+                ((state.correctCount / state.questions.length) * 100).toFixed(1) : 0;
+
+            document.getElementById('finalScore').textContent = `${state.score}/${state.questions.length}`;
+            document.getElementById('totalTime').textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+            document.getElementById('finalCorrect').textContent = state.correctCount;
+            document.getElementById('finalTotal').textContent = state.questions.length;
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+        }
+
+        function startOver() {
+            if (!confirm('هل أنت متأكد من إعادة البدء؟ سيتم فقدان تقدمك.')) return;
+            restartQuiz();
+        }
+
+        function restartQuiz() {
+            location.reload();
+        }
+
+        init();
+    </script>
+</body>
+</html>

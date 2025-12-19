@@ -1,0 +1,445 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>C++ Code Examples</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            padding: 20px;
+            min-height: 100vh;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        h1 {
+            text-align: center;
+            color: white;
+            margin-bottom: 30px;
+            font-size: 2.5em;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.3);
+        }
+
+        .code-section {
+            background: white;
+            border-radius: 12px;
+            padding: 25px;
+            margin-bottom: 25px;
+            box-shadow: 0 10px 30px rgba(0,0,0,0.2);
+            transition: transform 0.3s ease;
+        }
+
+        .code-section:hover {
+            transform: translateY(-5px);
+        }
+
+        .question-title {
+            font-size: 1.4em;
+            color: #333;
+            margin-bottom: 15px;
+            padding-bottom: 10px;
+            border-bottom: 3px solid #667eea;
+        }
+
+        .code-container {
+            position: relative;
+            background: #282c34;
+            border-radius: 8px;
+            overflow: hidden;
+        }
+
+        .code-header {
+            background: #21252b;
+            padding: 10px 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            border-bottom: 1px solid #181a1f;
+        }
+
+        .language-label {
+            color: #abb2bf;
+            font-size: 0.9em;
+            font-family: 'Consolas', 'Courier New', monospace;
+        }
+
+        .copy-btn {
+            background: #667eea;
+            color: white;
+            border: none;
+            padding: 6px 15px;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 0.9em;
+            transition: background 0.3s ease;
+        }
+
+        .copy-btn:hover {
+            background: #5568d3;
+        }
+
+        .copy-btn.copied {
+            background: #10b981;
+        }
+
+        pre {
+            margin: 0;
+            padding: 20px;
+            overflow-x: auto;
+        }
+
+        code {
+            font-family: 'Consolas', 'Courier New', monospace;
+            font-size: 14px;
+            line-height: 1.6;
+            color: #abb2bf;
+        }
+
+        /* Syntax Highlighting */
+        .keyword { color: #c678dd; }
+        .function { color: #61afef; }
+        .string { color: #98c379; }
+        .comment { color: #5c6370; font-style: italic; }
+        .number { color: #d19a66; }
+        .operator { color: #56b6c2; }
+        .type { color: #e5c07b; }
+        .preprocessor { color: #c678dd; }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 1.8em;
+            }
+            .question-title {
+                font-size: 1.1em;
+            }
+            code {
+                font-size: 12px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>📝 C++ Code Examples Collection</h1>
+
+        <div class="code-section">
+            <h2 class="question-title">1. Create a Calculator using Switch Statement</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code1')">Copy Code</button>
+                </div>
+                <pre><code id="code1">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    char oper;
+    float num1, num2;
+    cout &lt;&lt; "Enter an operator (+, -, *, /): ";
+    cin &gt;&gt; oper;
+    cout &lt;&lt; "Enter two numbers: " &lt;&lt; endl;
+    cin &gt;&gt; num1 &gt;&gt; num2;
+    
+    switch (oper) {
+        case '+':
+            cout &lt;&lt; num1 &lt;&lt; "+" &lt;&lt; num2 &lt;&lt; "=" &lt;&lt; num1 + num2;
+            break;
+        case '-':
+            cout &lt;&lt; num1 &lt;&lt; "-" &lt;&lt; num2 &lt;&lt; "=" &lt;&lt; num1 - num2;
+            break;
+        case '*':
+            cout &lt;&lt; num1 &lt;&lt; "*" &lt;&lt; num2 &lt;&lt; "=" &lt;&lt; num1 * num2;
+            break;
+        case '/':
+            cout &lt;&lt; num1 &lt;&lt; "/" &lt;&lt; num2 &lt;&lt; "=" &lt;&lt; num1 / num2;
+            break;
+        default:
+            cout &lt;&lt; "Error! The operator is not correct";
+            break;
+    }
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <h2 class="question-title">2. Add All Numbers from 1 to a Given Number</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code2')">Copy Code</button>
+                </div>
+                <pre><code id="code2">#include &lt;iostream&gt;
+using namespace std;
+
+int Add_1_to_given_number(int n) {
+    int total = 0;
+    for (int x = 1; x &lt;= n; x++) {
+        total += x;
+    }
+    return total;
+}
+
+int main() {
+    cout &lt;&lt; "\nAdd 1 to 4: " &lt;&lt; Add_1_to_given_number(4);
+    cout &lt;&lt; "\nAdd 1 to 100: " &lt;&lt; Add_1_to_given_number(100);
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <h2 class="question-title">3. Swap Two Numbers</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code3')">Copy Code</button>
+                </div>
+                <pre><code id="code3">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "\n\n Swap two numbers :\n";
+    cout &lt;&lt; "-----------------------\n";
+    int num1, num2, temp;
+    cout &lt;&lt; " Input 1st number : ";
+    cin &gt;&gt; num1;
+    cout &lt;&lt; " Input 2nd number : ";
+    cin &gt;&gt; num2;
+    
+    temp = num2;
+    num2 = num1;
+    num1 = temp;
+    
+    cout &lt;&lt; " After swapping the 1st number is : " &lt;&lt; num1 &lt;&lt; "\n";
+    cout &lt;&lt; " After swapping the 2nd number is : " &lt;&lt; num2 &lt;&lt; "\n\n";
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <h2 class="question-title">4. Check Whether a Number is Prime or Not</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code4')">Copy Code</button>
+                </div>
+                <pre><code id="code4">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int num1, ctr = 0;
+    cout &lt;&lt; "\n\n Check whether a number is prime or not:\n";
+    cout &lt;&lt; "-------------------------------------\n";
+    cout &lt;&lt; " Input a number to check prime or not: ";
+    cin &gt;&gt; num1;
+    
+    for (int a = 1; a &lt;= num1; a++) {
+        if (num1 % a == 0) {
+            ctr++;
+        }
+    }
+    
+    if (ctr == 2) {
+        cout &lt;&lt; " The entered number is a prime number. \n";
+    } else {
+        cout &lt;&lt; " The number you entered is not a prime number. \n";
+    }
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <h2 class="question-title">5. Find Maximum Between Two Numbers</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code5')">Copy Code</button>
+                </div>
+                <pre><code id="code5">#include &lt;iostream&gt;
+using namespace std;
+
+int max_two(int a, int b) {
+    int maxi;
+    if (a > b)
+        maxi = a;
+    else
+        maxi = b;
+    return maxi;
+}
+
+int main() {
+    int num1, num2, maximun;
+    cout &lt;&lt; "Enter first number:";
+    cin &gt;&gt; num1;
+    cout &lt;&lt; "Enter second number:";
+    cin &gt;&gt; num2;
+    maximun = max_two(num1, num2);
+    cout &lt;&lt; "The maximun of " &lt;&lt; num1 &lt;&lt; " and " &lt;&lt; num2 &lt;&lt; " is: " &lt;&lt; maximun;
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <h2 class="question-title">6. Sum of All Natural Numbers up to a Given Number</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code6')">Copy Code</button>
+                </div>
+                <pre><code id="code6">#include &lt;iostream&gt;
+using namespace std;
+
+int sum_a(int num) {
+    int suma = 0;
+    for (int i = 1; i &lt;= num; i = i + 1) {
+        suma = suma + i;
+    }
+    return suma;
+}
+
+int main() {
+    int a, sum = 0;
+    cout &lt;&lt; "Enter a number:";
+    cin &gt;&gt; a;
+    cout &lt;&lt; sum_a(a);
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <h2 class="question-title">7. Print All Even and Odd Numbers from 1 to N</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code7')">Copy Code</button>
+                </div>
+                <pre><code id="code7">#include &lt;iostream&gt;
+using namespace std;
+
+void printEvenNumbers(int N) {
+    cout &lt;&lt; "Even: ";
+    for (int i = 1; i &lt;= 2 * N; i++) {
+        if (i % 2 == 0)
+            cout &lt;&lt; i &lt;&lt; " ";
+    }
+}
+
+void printOddNumbers(int N) {
+    cout &lt;&lt; "\nOdd: ";
+    for (int i = 1; i &lt;= 2 * N; i++) {
+        if (i % 2 != 0)
+            cout &lt;&lt; i &lt;&lt; " ";
+    }
+}
+
+int main() {
+    int N = 5;
+    printEvenNumbers(N);
+    printOddNumbers(N);
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <h2 class="question-title">8. Check Personal Data for Job Applicant</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code8')">Copy Code</button>
+                </div>
+                <pre><code id="code8">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    cout &lt;&lt; "\n\n Program for applying from a job :\n";
+    cout &lt;&lt; "------------------------------------------\n";
+    int age;
+    char isEmployed_before;
+    int year_graduate;
+    int Years_of_Experience;
+    char grade;
+
+    cout &lt;&lt; "how old are you?" &lt;&lt; endl;
+    cin &gt;&gt; age;
+    cout &lt;&lt; "when you graduated?" &lt;&lt; endl;
+    cin &gt;&gt; year_graduate;
+    cout &lt;&lt; "are you Employed_before:y/n?" &lt;&lt; endl;
+    cin &gt;&gt; isEmployed_before;
+    cout &lt;&lt; "how many Experience years?" &lt;&lt; endl;
+    cin &gt;&gt; Years_of_Experience;
+    cout &lt;&lt; "what is your graduate grade e=excellent, v=very good, g=good?" &lt;&lt; endl;
+    cin &gt;&gt; grade;
+
+    if(age &lt;= 30 && isEmployed_before == 'y' && year_graduate &gt;= 2013 && 
+       Years_of_Experience &gt;= 2 && grade == 'e') {
+        cout &lt;&lt; "you are acceptable for this job";
+    } else {
+        cout &lt;&lt; "Sorry, you can try another job";
+    }
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+
+        <div class="code-section">
+            <h2 class="question-title">9. Find Factorial of a Given Number N</h2>
+            <div class="code-container">
+                <div class="code-header">
+                    <span class="language-label">C++</span>
+                    <button class="copy-btn" onclick="copyCode(this, 'code9')">Copy Code</button>
+                </div>
+                <pre><code id="code9">#include &lt;iostream&gt;
+using namespace std;
+
+int main() {
+    int n;
+    int factorial = 1;
+    cout &lt;&lt; "Enter a positive integer: ";
+    cin &gt;&gt; n;
+    
+    if (n &lt; 0)
+        cout &lt;&lt; "Error! Factorial of a negative number doesn't exist.";
+    else {
+        for(int i = 1; i &lt;= n; ++i) {
+            factorial *= i;
+        }
+        cout &lt;&lt; "Factorial of " &lt;&lt; n &lt;&lt; " = " &lt;&lt; factorial;
+    }
+    return 0;
+}</code></pre>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        function copyCode(btn, codeId) {
+            const code = document.getElementById(codeId).textContent;
+            navigator.clipboard.writeText(code).then(() => {
+                btn.textContent = '✓ Copied';
+                btn.classList.add('copied');
+                setTimeout(() => {
+                    btn.textContent = 'Copy Code';
+                    btn.classList.remove('copied');
+                }, 2000);
+            });
+        }
+    </script>
+</body>
+</html>

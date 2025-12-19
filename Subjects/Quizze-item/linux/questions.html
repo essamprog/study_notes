@@ -1,0 +1,434 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>True/False Master Quiz</title>
+    <style>
+        /* --- 1. CSS from Code 2 (The Good Style) --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            min-height: 100vh;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            padding: 20px;
+        }
+
+        .container {
+            background: white;
+            border-radius: 20px;
+            box-shadow: 0 20px 60px rgba(0, 0, 0, 0.3);
+            max-width: 750px;
+            width: 100%;
+            padding: 40px;
+            animation: fadeIn 0.5s ease-in;
+        }
+
+        @keyframes fadeIn { from { opacity: 0; transform: translateY(-20px); } to { opacity: 1; transform: translateY(0); } }
+
+        .header { text-align: center; margin-bottom: 30px; }
+        .header h1 { color: #667eea; font-size: 2.5em; margin-bottom: 10px; }
+
+        .restart-btn {
+            background: #dc3545; color: white; border: none; padding: 10px 20px;
+            border-radius: 25px; cursor: pointer; transition: all 0.3s ease;
+            font-weight: 500; font-size: 0.9em;
+        }
+        .restart-btn:hover { background: #c82333; transform: translateY(-2px); box-shadow: 0 5px 15px rgba(220, 53, 69, 0.4); }
+
+        /* Stats Bar */
+        .timer-progress-wrapper {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 30px; flex-wrap: wrap; gap: 15px;
+        }
+        .stat-badge {
+            background: #f0f0f0; padding: 10px 20px; border-radius: 25px;
+            font-weight: bold; color: #667eea; font-size: 1.1em;
+        }
+        .score-badge {
+            background: linear-gradient(135deg, #ffd700 0%, #ffed4e 100%);
+            color: #333; box-shadow: 0 2px 10px rgba(255, 215, 0, 0.3);
+        }
+
+        /* Question Area Styling */
+        .question-container { animation: slideIn 0.4s ease-out; }
+        @keyframes slideIn { from { opacity: 0; transform: translateX(20px); } to { opacity: 1; transform: translateX(0); } }
+
+        .question-label { font-size: 0.9em; color: #888; margin-bottom: 5px; text-transform: uppercase; letter-spacing: 1px; }
+        
+        .main-question {
+            font-size: 1.3em; color: #333; margin-bottom: 20px; font-weight: 600;
+        }
+
+        /* Special Styling for the Statement (from Code 1 logic) adapted to Code 2 style */
+        .statement-box {
+            background: #f8f9fa;
+            border-left: 5px solid #667eea;
+            padding: 25px;
+            border-radius: 8px;
+            font-size: 1.4em;
+            color: #444;
+            margin-bottom: 30px;
+            box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+        }
+
+        /* True/False Buttons Styling */
+        .tf-choices { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; }
+
+        .choice-btn {
+            background: white; border: 3px solid #e0e0e0; padding: 20px;
+            border-radius: 15px; font-size: 1.3em; font-weight: bold;
+            cursor: pointer; transition: all 0.3s ease; text-align: center;
+        }
+
+        .choice-btn:hover:not(:disabled) { transform: translateY(-3px); box-shadow: 0 5px 15px rgba(102, 126, 234, 0.3); }
+        .choice-btn.true-btn:hover:not(:disabled) { border-color: #4caf50; color: #4caf50; background: #e8f5e9; }
+        .choice-btn.false-btn:hover:not(:disabled) { border-color: #f44336; color: #f44336; background: #ffebee; }
+
+        .choice-btn:disabled { cursor: not-allowed; opacity: 0.8; }
+
+        /* Correct/Wrong States */
+        .choice-btn.correct { background: #4caf50; color: white; border-color: #4caf50; animation: pulse 0.5s ease; }
+        .choice-btn.wrong { background: #f44336; color: white; border-color: #f44336; animation: shake 0.5s ease; }
+
+        @keyframes pulse { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.05); } }
+        @keyframes shake { 0%, 100% { transform: translateX(0); } 25% { transform: translateX(-10px); } 75% { transform: translateX(10px); } }
+
+        /* Feedback */
+        .feedback { margin-top: 20px; padding: 15px; border-radius: 10px; text-align: center; font-weight: bold; }
+        .feedback.success { background: #e8f5e9; color: #2e7d32; }
+        .feedback.error { background: #ffebee; color: #c62828; }
+
+        /* Navigation */
+        .navigation-buttons { display: flex; justify-content: space-between; gap: 15px; margin-top: 25px; }
+        .nav-btn {
+            background: #667eea; color: white; border: none; padding: 12px 30px;
+            border-radius: 25px; font-size: 1.1em; cursor: pointer; transition: all 0.3s ease; flex: 1;
+        }
+        .nav-btn:hover:not(:disabled) { background: #5568d3; transform: translateY(-2px); }
+        .nav-btn:disabled { background: #ccc; cursor: not-allowed; opacity: 0.6; }
+        .nav-btn.prev-btn { background: #6c757d; }
+        .nav-btn.prev-btn:hover:not(:disabled) { background: #5a6268; }
+
+        /* Results */
+        .results-container { text-align: center; display: none; }
+        .score-display { font-size: 4em; color: #667eea; font-weight: bold; margin: 20px 0; }
+        .results-stats { background: #f8f9fa; padding: 25px; border-radius: 15px; margin: 25px 0; }
+        .stat-item { display: flex; justify-content: space-between; padding: 12px 0; border-bottom: 1px solid #e0e0e0; font-size: 1.2em; }
+        .stat-item:last-child { border-bottom: none; }
+        .play-again-btn { background: #667eea; color: white; border: none; padding: 15px 40px; border-radius: 25px; font-size: 1.2em; cursor: pointer; transition: all 0.3s ease; }
+        .play-again-btn:hover { background: #5568d3; transform: translateY(-2px); }
+
+        .hidden { display: none; }
+        .loading, .error-message { text-align: center; padding: 30px; font-size: 1.2em; }
+        .error-message { color: #c62828; background: #ffebee; border-radius: 10px; }
+
+        @media (max-width: 600px) {
+            .container { padding: 25px; }
+            .header h1 { font-size: 2em; }
+            .tf-choices { grid-template-columns: 1fr; }
+            .timer-progress-wrapper { flex-direction: column; align-items: stretch; text-align: center; }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div class="header">
+            <h1>True/False Challenge</h1>
+            <button class="restart-btn hidden" id="restartBtn" onclick="startOver()">🔄 Restart</button>
+        </div>
+
+        <div id="loading" class="loading">Loading questions...</div>
+        <div id="error" class="error-message hidden"></div>
+
+        <div id="quizContainer" class="hidden">
+            <div class="timer-progress-wrapper">
+                <div class="stat-badge">⏱️ <span id="timer">00:00</span></div>
+                <div class="stat-badge score-badge">🏆 Score: <span id="correctCount">0</span></div>
+                <div class="stat-badge">Question <span id="currentQ">1</span> of <span id="totalQ">0</span></div>
+            </div>
+
+            <div class="question-container">
+                <div class="question-label">The Topic:</div>
+                <div class="main-question" id="questionText"></div>
+
+                <div class="statement-box" id="statementText"></div>
+
+                <div class="tf-choices">
+                    <button class="choice-btn true-btn" id="btnTrue" onclick="handleAnswer(true)">✓ True</button>
+                    <button class="choice-btn false-btn" id="btnFalse" onclick="handleAnswer(false)">✗ False</button>
+                </div>
+
+                <div id="feedback" class="feedback hidden"></div>
+
+                <div class="navigation-buttons">
+                    <button class="nav-btn prev-btn" id="prevBtn" onclick="prevQuestion()">⏮️ Previous</button>
+                    <button class="nav-btn next-btn" id="nextBtn" onclick="nextQuestion()">Next ⏭️</button>
+                </div>
+            </div>
+        </div>
+
+        <div id="resultsContainer" class="results-container">
+            <h2>🎉 Quiz Complete!</h2>
+            <div class="score-display" id="finalScore">0/0</div>
+            
+            <div class="results-stats">
+                <div class="stat-item">
+                    <span>⏱️ Total Time:</span>
+                    <span id="totalTime" style="color:#667eea; font-weight:bold;">00:00</span>
+                </div>
+                <div class="stat-item">
+                    <span>✅ Correct Answers:</span>
+                    <span id="finalCorrect" style="color:#667eea; font-weight:bold;">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>📝 Total Questions:</span>
+                    <span id="finalTotal" style="color:#667eea; font-weight:bold;">0</span>
+                </div>
+                <div class="stat-item">
+                    <span>🎯 Accuracy:</span>
+                    <span id="accuracy" style="color:#667eea; font-weight:bold;">0%</span>
+                </div>
+            </div>
+            
+            <button class="play-again-btn" onclick="restartQuiz()">🔄 Play Again</button>
+        </div>
+    </div>
+
+    <script>
+        // --- LOGIC FROM CODE 1 (State & Data Processing) ---
+        const state = {
+            questions: [],
+            tfQuestions: [], // The exploded array of True/False questions
+            currentIndex: 0,
+            score: 0,
+            correctCount: 0,
+            startTime: null,
+            timerInterval: null,
+            answers: {},
+            answered: {}
+        };
+
+        const els = {
+            loading: document.getElementById('loading'),
+            error: document.getElementById('error'),
+            quizContainer: document.getElementById('quizContainer'),
+            resultsContainer: document.getElementById('resultsContainer'),
+            restartBtn: document.getElementById('restartBtn'),
+            timer: document.getElementById('timer'),
+            currentQ: document.getElementById('currentQ'),
+            totalQ: document.getElementById('totalQ'),
+            correctCount: document.getElementById('correctCount'),
+            questionText: document.getElementById('questionText'),
+            statementText: document.getElementById('statementText'),
+            feedback: document.getElementById('feedback'),
+            prevBtn: document.getElementById('prevBtn'),
+            nextBtn: document.getElementById('nextBtn'),
+            btnTrue: document.getElementById('btnTrue'),
+            btnFalse: document.getElementById('btnFalse')
+        };
+
+        // Initialize (Same logic as Code 1)
+        async function init() {
+            try {
+                const res = await fetch('data.json');
+                if (!res.ok) throw new Error('Failed to load questions');
+                const data = await res.json();
+                state.questions = Array.isArray(data) ? data : (data.questions || []);
+                if (!state.questions.length) throw new Error('No questions found');
+                
+                // CRUCIAL: Run the logic that converts MCQs to True/False
+                convertToTrueFalse();
+                startQuiz();
+            } catch(err) {
+                showError('Error: ' + err.message + '. Make sure data.json exists.');
+            }
+        }
+
+        // Logic from Code 1: Convert MCQ to T/F statements
+        function convertToTrueFalse() {
+            state.questions.forEach(q => {
+                q.choices.forEach((choice, cIndex) => {
+                    state.tfQuestions.push({
+                        originalQuestion: q.question,
+                        statement: choice,
+                        isTrue: cIndex === q.answer
+                    });
+                });
+            });
+            // Shuffle
+            for(let i=state.tfQuestions.length-1;i>0;i--){
+                const j=Math.floor(Math.random()*(i+1));
+                [state.tfQuestions[i], state.tfQuestions[j]]=[state.tfQuestions[j], state.tfQuestions[i]];
+            }
+        }
+
+        function showError(msg) {
+            els.loading.classList.add('hidden');
+            els.error.textContent = msg;
+            els.error.classList.remove('hidden');
+        }
+
+        function startQuiz() {
+            els.loading.classList.add('hidden');
+            els.quizContainer.classList.remove('hidden');
+            els.restartBtn.classList.remove('hidden');
+            els.totalQ.textContent = state.tfQuestions.length;
+            state.startTime = Date.now();
+            startTimer();
+            displayQuestion();
+        }
+
+        function startTimer() {
+            state.timerInterval = setInterval(()=>{
+                const elapsed = Date.now()-state.startTime;
+                const mins=Math.floor(elapsed/60000);
+                const secs=Math.floor((elapsed%60000)/1000);
+                els.timer.textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+            },1000);
+        }
+
+        // Adapted Display Logic
+        function displayQuestion(){
+            const q = state.tfQuestions[state.currentIndex];
+            els.currentQ.textContent = state.currentIndex + 1;
+            
+            // Map the data to the UI
+            els.questionText.textContent = q.originalQuestion;
+            els.statementText.textContent = q.statement; // The specific choice being tested
+            els.feedback.classList.add('hidden');
+
+            // Reset Buttons Visuals
+            [els.btnTrue, els.btnFalse].forEach(btn => {
+                btn.disabled = false;
+                btn.classList.remove('correct', 'wrong');
+            });
+
+            // If already answered, restore state
+            if(state.answered[state.currentIndex]){
+                const ans = state.answers[state.currentIndex];
+                const selectedBtn = ans.selected ? els.btnTrue : els.btnFalse;
+                const otherBtn = ans.selected ? els.btnFalse : els.btnTrue;
+                
+                selectedBtn.classList.add(ans.correct ? 'correct' : 'wrong');
+                selectedBtn.disabled = true;
+                otherBtn.disabled = true;
+                
+                // If wrong, show correct (optional based on preference, but good for UI)
+                if(!ans.correct) {
+                     // Highlight the actual correct answer
+                     const correctBtn = q.isTrue ? els.btnTrue : els.btnFalse;
+                     correctBtn.classList.add('correct'); // Use correct style to show solution
+                }
+            }
+
+            updateNav();
+            updateCounter();
+        }
+
+        // Handle Answer Click (Logic Code 1, Visuals Code 2)
+        function handleAnswer(selected){
+            if(state.answered[state.currentIndex]) return;
+            
+            const q = state.tfQuestions[state.currentIndex];
+            const correct = selected === q.isTrue;
+            
+            const clickedBtn = selected ? els.btnTrue : els.btnFalse;
+            const otherBtn = !selected ? els.btnTrue : els.btnFalse;
+
+            // Apply Visuals
+            clickedBtn.classList.add(correct ? 'correct' : 'wrong');
+            
+            // Logic Updates
+            if(correct){
+                state.score++; 
+                state.correctCount++; 
+                showFeedback('✅ Correct!', 'success');
+            } else {
+                showFeedback('❌ Wrong!', 'error');
+                // Auto-show correct answer
+                const correctBtn = q.isTrue ? els.btnTrue : els.btnFalse;
+                correctBtn.classList.add('correct');
+            }
+
+            // Save state
+            state.answers[state.currentIndex] = {selected, correct};
+            state.answered[state.currentIndex] = true;
+
+            // Disable buttons
+            clickedBtn.disabled = true;
+            otherBtn.disabled = true;
+
+            updateNav();
+            updateCounter();
+        }
+
+        function showFeedback(msg, type){
+            els.feedback.textContent = msg;
+            els.feedback.className = `feedback ${type}`;
+            els.feedback.classList.remove('hidden');
+        }
+
+        function updateNav(){
+            els.prevBtn.disabled = state.currentIndex === 0;
+            const isAnswered = state.answered[state.currentIndex];
+            els.nextBtn.disabled = !isAnswered;
+            els.nextBtn.textContent = state.currentIndex === state.tfQuestions.length - 1 ? 'Finish Quiz ✅' : 'Next ⏭️';
+        }
+
+        function updateCounter(){
+            els.correctCount.textContent = state.correctCount;
+        }
+
+        function nextQuestion(){
+            if(state.currentIndex < state.tfQuestions.length - 1){
+                state.currentIndex++; 
+                displayQuestion();
+            } else {
+                showResults();
+            }
+        }
+
+        function prevQuestion(){
+            if(state.currentIndex > 0){
+                state.currentIndex--; 
+                displayQuestion();
+            }
+        }
+
+        function showResults(){
+            clearInterval(state.timerInterval);
+            els.quizContainer.classList.add('hidden');
+            els.resultsContainer.style.display = 'block'; // Show results
+            els.restartBtn.classList.add('hidden');
+
+            const elapsed = Date.now() - state.startTime;
+            const mins = Math.floor(elapsed/60000);
+            const secs = Math.floor((elapsed%60000)/1000);
+            const accuracy = state.tfQuestions.length > 0 ? ((state.correctCount / state.tfQuestions.length) * 100).toFixed(1) : 0;
+
+            document.getElementById('finalScore').textContent = `${state.score}/${state.tfQuestions.length}`;
+            document.getElementById('totalTime').textContent = `${String(mins).padStart(2,'0')}:${String(secs).padStart(2,'0')}`;
+            document.getElementById('finalCorrect').textContent = state.correctCount;
+            document.getElementById('finalTotal').textContent = state.tfQuestions.length;
+            document.getElementById('accuracy').textContent = `${accuracy}%`;
+        }
+
+        function startOver(){
+            if(!confirm('Are you sure you want to restart? Your progress will be lost.')) return;
+            restartQuiz();
+        }
+
+        function restartQuiz(){ 
+            location.reload(); 
+        }
+
+        // Start
+        init();
+    </script>
+</body>
+</html>

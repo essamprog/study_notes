@@ -1,0 +1,418 @@
+/* ======= General Settings ======= */
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+    font-family: 'Gill Sans MT';
+    background: linear-gradient(135deg, #f5f7fa 0%, #e8eef5 100%);
+    color: #333;
+    line-height: 1.6;
+    direction: ltr;
+    min-height: 100vh;
+}
+
+/* ======= Main Header ======= */
+.course-header {
+    position: relative;
+    width: 100%;
+    height: 450px;
+    overflow: hidden;
+    border-radius: 30px;
+    margin: 25px auto 40px;
+    max-width: 1400px;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.15);
+}
+
+.header-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(to bottom, rgba(0,0,0,0.1) 0%, rgba(0,0,0,0.5) 100%);
+    z-index: 1;
+}
+
+.course-cover {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center;
+
+}
+
+.overlay-info {
+    position: absolute;
+    bottom: 40px;
+    left: 40px;
+    right: 40px;
+    color: white;
+    z-index: 2;
+}
+
+.course-title {
+    font-size: 35px;
+    font-weight: 600;
+    margin-bottom: 12px;
+    text-shadow: 3px 3px 8px rgba(0, 0, 0, 0.5);
+    letter-spacing: -0.5px;
+}
+
+.course-subtitle {
+    font-size: 17px;
+    margin-bottom: 35px;
+    opacity: 0.95;
+    max-width: 600px;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.4);
+}
+
+/* ======= Instructor Information ======= */
+.doctor-info {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    width: fit-content;
+}
+
+.doctor-photo {
+    width: 75px;
+    height: 75px;
+    border-radius: 50%;
+    border: 3px solid whitesmoke;
+    box-shadow: 0 4px 12px rgba(0, 0, 0, 0.3);
+}
+
+.doctor-details {
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.doctor-name {
+    font-size: 19px;
+    font-weight: 600;
+}
+
+.doctor-title {
+    font-size: 17px;
+    opacity: 0.9;
+}
+
+/* ======= Main Structure - عكست الترتيب ======= */
+.main-content {
+    display: flex;
+    flex-direction: row-reverse; /* عكست عشان الـ sidebar يروح شمال */
+    max-width: 1400px;
+    margin: 50px auto;
+    padding: 0 20px;
+    gap: 35px;
+}
+
+.content-container {
+    flex: 1;
+}
+
+/* ======= Sidebar - على الشمال ======= */
+.sidebar {
+    width: 340px;
+    flex-shrink: 0;
+    position: sticky;
+    top: 30px;
+    height: fit-content;
+}
+
+.sidebar-card {
+    background: white;
+    border-radius: 20px;
+    padding: 30px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+}
+
+.sidebar-card h3 {
+    color: #2c3e50;
+    margin-bottom: 25px;
+    font-size: 22px;
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    font-weight: 700;
+}
+
+.sidebar-card h4 {
+    color: #34495e;
+    margin: 25px 0 18px;
+    font-size: 18px;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-weight: 600;
+}
+
+.info-item {
+    display: flex;
+    align-items: center;
+    gap: 18px;
+    padding: 15px 0;
+    border-bottom: 1px solid #f5f5f5;
+    transition: all 0.2s ease;
+}
+.info-item:last-child {
+    border-bottom: none;
+}
+
+.info-item i {
+    color: #3498db;
+    font-size: 20px;
+    width: 28px;
+}
+
+.info-label {
+    display: block;
+    font-size: 14px;
+    color: #7f8c8d;
+    font-weight: 500;
+}
+
+.info-value {
+    display: block;
+    font-weight: 700;
+    color: #2c3e50;
+    margin-top: 3px;
+    font-size: 16px;
+}
+
+.sidebar-divider {
+    height: 2px;
+    background: linear-gradient(to right, #3498db, transparent);
+    margin: 25px 0;
+}
+
+/* ======= Rating ======= */
+.rating {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.stars {
+    color: #f39c12;
+    font-size: 20px;
+    letter-spacing: 3px;
+}
+
+.rating-text {
+    font-size: 15px;
+    color: #7f8c8d;
+    font-weight: 600;
+}
+
+/* ======= Main Sections ======= */
+.card-section {
+    background: white;
+    border-radius: 20px;
+    padding: 35px;
+    margin-bottom: 35px;
+    box-shadow: 0 8px 25px rgba(0, 0, 0, 0.08);
+    border: 1px solid #f0f0f0;
+    transition: all 0.3s ease;
+}
+
+.card-section:hover {
+    box-shadow: 0 12px 35px rgba(0, 0, 0, 0.12);
+}
+
+.section-title {
+    color: #2c3e50;
+    font-size: 28px;
+    margin-bottom: 28px;
+    display: flex;
+    align-items: center;
+    gap: 14px;
+    font-weight: 700;
+    padding-bottom: 15px;
+    border-bottom: 3px solid #3498db;
+}
+
+.section-title i {
+    color: #3498db;
+    font-size: 26px;
+}
+
+/* ======= About Course Section ======= */
+.course-description {
+    font-size: 18px;
+    line-height: 2;
+    color: #555;
+}
+
+/* ======= What You Will Learn Section ======= */
+.learn-grid {
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    margin-top: 25px;
+
+}
+
+.learn-item {
+    display: flex;
+    align-items: flex-start;
+    gap: 15px;
+    padding: 16px 18px;
+    background: linear-gradient(135deg, #f8f9fa 0%, #e8eef5 100%);
+    border-radius: 12px;
+    transition: all 0.3s ease;
+    border-left: 4px solid transparent;
+
+    margin-bottom: 0;
+}
+
+.learn-item i {
+    color: #2ecc71;
+    font-size: 20px;
+    margin-top: 3px;
+}
+
+.learn-item span {
+    color: #2c3e50;
+    line-height: 1.7;
+    font-size: 16px;
+}
+
+/* ======= Content Cards ======= */
+.cards-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+    gap: 30px;
+    margin-top: 30px;
+}
+
+.card {
+    background: white;
+    border-radius: 18px;
+    padding: 30px;
+    text-align: center;
+    transition: all 0.4s ease;
+    border: 2px solid #f0f0f0;
+    position: relative;
+    overflow: hidden;
+}
+
+.card:hover {
+    transform: translateY(-12px);
+    box-shadow: 0 20px 40px rgba(0, 0, 0, 0.15);
+    border-color: #3498db;
+}
+
+.card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 5px;
+    background: linear-gradient(90deg, #3498db 0%, #2ecc71 100%);
+}
+
+.card-icon {
+    position: relative;
+    width: 80px;
+    height: 80px;
+    background: linear-gradient(135deg, #e8f4fc 0%, #d1e7f5 100%);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto 25px;
+    transition: all 0.3s ease;
+}
+
+.card:hover .card-icon {
+    transform: scale(1.1) rotate(5deg);
+}
+
+.card-icon i {
+    font-size: 32px;
+    color: #3498db;
+}
+
+.card-title {
+    color: #2c3e50;
+    font-size: 22px;
+    margin-bottom: 14px;
+    font-weight: 700;
+}
+
+.card-desc {
+    color: #7f8c8d;
+    font-size: 15px;
+    line-height: 1.7;
+    margin-bottom: 25px;
+    min-height: 65px;
+}
+
+.card-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #3498db;
+    text-decoration: none;
+    font-weight: 700;
+    font-size: 16px;
+    transition: all 0.3s ease;
+}
+
+.card-link:hover {
+    color: #2980b9;
+    gap: 15px;
+}
+
+/* ======= Footer ======= */
+.footer {
+    background: linear-gradient(135deg, #2c3e50 0%, #34495e 100%);
+    color: white;
+    padding: 35px 40px;
+    text-align: center;
+    margin-top: 70px;
+    border-radius: 25px 25px 0 0;
+    box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.1);
+}
+
+.footer p {
+    margin-bottom: 22px;
+    opacity: 0.9;
+    font-size: 15px;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+    gap: 35px;
+    flex-wrap: wrap;
+}
+
+.footer-links a {
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    opacity: 0.85;
+    transition: all 0.3s ease;
+    font-size: 15px;
+}
+
+.footer-links a:hover {
+    opacity: 1;
+    color: #3498db;
+    transform: translateY(-2px);
+}
+

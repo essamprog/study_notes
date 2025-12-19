@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Linux Quiz Hub</title>
+    <style>
+        * { margin:0; padding:0; box-sizing:border-box; }
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            display:flex;
+            justify-content:center;
+            align-items:center;
+            min-height:100vh;
+            background: linear-gradient(135deg,#667eea 0%,#764ba2 100%);
+        }
+        .container {
+            background:white;
+            border-radius:25px;
+            box-shadow:0 20px 60px rgba(0,0,0,0.3);
+            padding:50px 40px;
+            max-width:500px;
+            text-align:center;
+            animation:fadeIn 0.5s ease-in;
+        }
+        @keyframes fadeIn {
+            from { opacity:0; transform: translateY(-20px);}
+            to { opacity:1; transform: translateY(0);}
+        }
+        h1 {
+            font-size:2.8em;
+            color:#667eea;
+            margin-bottom:40px;
+        }
+        .btn {
+            display:block;
+            text-decoration:none;
+            margin:20px auto;
+            padding:18px 40px;
+            font-size:1.2em;
+            font-weight:bold;
+            color:white;
+            background:#667eea;
+            border-radius:30px;
+            transition: all 0.3s ease;
+        }
+        .btn:hover {
+            background:#5568d3;
+            transform:translateY(-3px);
+            box-shadow:0 8px 20px rgba(102,126,234,0.4);
+        }
+        .subtitle {
+            color:#555;
+            font-size:1em;
+            margin-bottom:30px;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Linux Quiz Hub</h1>
+        <div class="subtitle">Choose your preferred quiz type:</div>
+        <a href="input.html" class="btn">Input Command Quiz</a>
+        <a href="choice.html" class="btn">Multiple Choice Quiz</a>
+        <a href="questions.html" class="btn">True / False Quiz</a>
+    </div>
+</body>
+</html>

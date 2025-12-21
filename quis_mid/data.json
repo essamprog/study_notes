@@ -1,0 +1,402 @@
+[
+  {
+    "question": "We wish to ensure that a value that appears in one relation for a given set of attributes also appears for a certain set of attributes in another relation. This condition is called ___________.",
+    "choices": [
+      "Join integrity",
+      "Relational integrity",
+      "Referential integrity",
+      "Set integrity"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following statement is not correct for the keys in relational databases?",
+    "choices": [
+      "A super key is a set of one or more attributes that, taken collectively, allow us to identify uniquely a tuple in the relation.",
+      "We are often interested in super keys for which no proper subset is a super key. Such minimal super keys are called candidate keys.",
+      "Primary key denotes a candidate key that is chosen as the principal means of identifying tuples within a relation.",
+      "A key (whether primary, candidate, or super) is a property of the individual tuples, rather than of the entire relation."
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the primary purpose of the Entity-Relationship (ER) Model in DBMS?",
+    "choices": [
+      "To design user interfaces for database systems",
+      "To model and represent data and its relationships in a database",
+      "To optimize database queries",
+      "To perform data encryption"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the cardinality of a relationship in the ER Model?",
+    "choices": [
+      "The type of data associated with an entity",
+      "The number of attributes in an entity",
+      "The number of occurrences or instances of one entity that can be associated with another entity through a relationship",
+      "The number of tables in a database"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "In the ER Model, what is the purpose of a diamond-shaped symbol in a diagram?",
+    "choices": [
+      "To represent an entity",
+      "To represent an attribute",
+      "To represent a relationship",
+      "To represent a primary key"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is a weak entity in the ER Model?",
+    "choices": [
+      "An entity with no attributes",
+      "An entity that cannot participate in a relationship",
+      "An entity with a strong primary key",
+      "An entity that depends on another entity for identification"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "What is a composite attribute in the ER Model?",
+    "choices": [
+      "An attribute with multiple values",
+      "An attribute that cannot be divided into smaller parts",
+      "An attribute that is part of the primary key",
+      "An attribute that is unrelated to other attributes"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which type of relationship in the ER Model allows an entity to be associated with itself?",
+    "choices": [
+      "One-to-One",
+      "One-to-Many",
+      "Many-to-One",
+      "Recursive"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "What is the purpose of a foreign key in the ER Model?",
+    "choices": [
+      "To represent a weak entity",
+      "To create a recursive relationship",
+      "To establish a connection between two entities",
+      "To represent a primary key"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What is the purpose of a ternary relationship in the ER Model?",
+    "choices": [
+      "To connect three entities in a relationship",
+      "To represent a weak entity",
+      "To create a recursive relationship",
+      "To establish a foreign key relationship"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "In the ER Model, what is a multi-valued attribute?",
+    "choices": [
+      "An attribute with multiple values",
+      "An attribute that cannot be divided into smaller parts",
+      "An attribute that is part of the primary key",
+      "An attribute that is unrelated to other attributes"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is the purpose of an ER diagram in the ER Model?",
+    "choices": [
+      "To represent SQL queries",
+      "To design user interfaces for a database",
+      "To visually represent the structure of a database, including entities, attributes, and relationships",
+      "To perform data encryption"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What is a derived attribute in the ER Model?",
+    "choices": [
+      "An attribute that is derived from the primary key",
+      "An attribute that cannot be divided into smaller parts",
+      "An attribute that is computed from other attributes",
+      "An attribute that represents a weak entity"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "In the ER Model, what is the purpose of a \"triangle\" notation in an entity?",
+    "choices": [
+      "To indicate a recursive relationship",
+      "To represent a primary key",
+      "To indicate a derived attribute",
+      "To represent a composite attribute"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What is a partial key in the ER Model?",
+    "choices": [
+      "An attribute that is not part of the primary key",
+      "An attribute that is part of the primary key",
+      "An attribute that represents a weak entity",
+      "An attribute that cannot be divided into smaller parts"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "An entity in an ER model corresponds to what in a relational database?",
+    "choices": [
+      "A row",
+      "column",
+      "table",
+      "relationship"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "In ER modelling, what represents the characteristics of an entity?",
+    "choices": [
+      "Entities",
+      "Relationships",
+      "Attributes",
+      "Identifiers"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "A single-valued attribute is an attribute that can hold:",
+    "choices": [
+      "Multiple values",
+      "No values",
+      "Only one value",
+      "At least one value"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "What type of attribute can be further subdivided into other attributes?",
+    "choices": [
+      "Simple attribute",
+      "Multi-valued attribute",
+      "Composite attribute",
+      "Derived attribute"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following is an example of a multi-valued attribute?",
+    "choices": [
+      "Phone number",
+      "Date of birth",
+      "Name",
+      "Register number"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "A relationship that connects an entity to another of the same entity type is called:",
+    "choices": [
+      "Ternary relationship",
+      "Binary relationship",
+      "Recursive relationship",
+      "Relationship set"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "An attribute that can be calculated from another attribute is called a:",
+    "choices": [
+      "Key attribute",
+      "Derived attribute",
+      "Composite attribute",
+      "Multi-valued attribute"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "In the Crow's Foot notation, what does a symbol with two vertical parallel lines indicate?",
+    "choices": [
+      "The maximum cardinality of a relationship",
+      "The minimum cardinality of a relationship",
+      "A weak entity",
+      "A strong entity"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "The participation of an entity type in a relationship that is mandatory is known as:",
+    "choices": [
+      "Partial participation",
+      "Total participation",
+      "Minimum cardinality",
+      "Maximum cardinality"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What defines a weak entity?",
+    "choices": [
+      "it has a primary key derived from the parent entity",
+      "It cannot exist without a parent entity",
+      "It has a unique primary key",
+      "It is always independent of other entities"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "If Tiny College has some departments that are classified as “research only” and do not offer courses, the COURSE entity of the college database would be …… the DEPARTMENT entity.",
+    "choices": [
+      "existence-dependent on",
+      "independent of",
+      "mandatory for",
+      "optional to"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "A relationship is an association between …..",
+    "choices": [
+      "objects",
+      "entities",
+      "databases",
+      "fields"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "A(n) …… is the set of possible values for a given attribute.",
+    "choices": [
+      "domain",
+      "range",
+      "identifier",
+      "key"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "In the entity relationship diagram (ERD), cardinality is indicated using the …… notation, where max is the maximum number of associated entities and min represents the minimum number of associated entities.",
+    "choices": [
+      "(max, min)",
+      "(min, max)",
+      "[min ... max]",
+      "{min|max}"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "The Crow’s foot symbol with two vertical parallel lines indicates …… cardinality.",
+    "choices": [
+      "(0,N)",
+      "(1,N)",
+      "(1,1)",
+      "(0,1)"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "A …… entity has a primary key that is partially or totally derived from the parent entity in the relationship.",
+    "choices": [
+      "strong",
+      "weak",
+      "business",
+      "child"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "When using the Crow's Foot notation, the associative entity is indicated by …… relationship lines between the parents and the associative entity.",
+    "choices": [
+      "dotted",
+      "double",
+      "triple",
+      "solid"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "If an employee within an EMPLOYEE entity has a relationship with itself, that relationship is known as a _____ relationship.",
+    "choices": [
+      "self",
+      "self-referring",
+      "self-referring",
+      "recursive"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "A _____ key is a real-world, generally accepted identifier used to uniquely identify real-world objects.",
+    "choices": [
+      "Primary",
+      "natural",
+      "foreign",
+      "surrogate"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "What does a mandatory relationship indicate about the minimum cardinality for the mandatory entity?",
+    "choices": [
+      "The minimum cardinality can be either 0 or 1 for the mandatory entity.",
+      "The minimum cardinality is 0 for the mandatory entity.",
+      "The minimum cardinality is always 0 for the mandatory entity.",
+      "The minimum cardinality is 1 for the mandatory entity."
+    ],
+    "answer": 3
+  },
+  {
+    "question": "Which type of diagram represents the database as viewed by the end user?",
+    "choices": [
+      "Logical",
+      "Conceptual",
+      "Physical",
+      "Condensed"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "If an entity can exist apart from all of its related entities, then it is existence-independent, and it is referred to as a(n) _____ entity.",
+    "choices": [
+      "weak",
+      "alone",
+      "unary",
+      "strong"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "The existence of a(n) _____ entity indicates that its minimum cardinality is zero.",
+    "choices": [
+      "ternary",
+      "optional",
+      "strong",
+      "weak"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "The entity relationship model uses the associative entity to represent a(n) ______ relationship between two or more entities.",
+    "choices": [
+      "M:N",
+      "1:M",
+      "N:1",
+      "M:1"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "In an ER Diagram, a double ellipse is used to represent :\n1. Simple Attribute\n2. Composite Attribute\n3. Descriptive Attribute\n4. Multi-valued Attribute",
+    "choices": [
+      "Simple Attribute",
+      "Composite Attribute",
+      "Descriptive Attribute",
+      "Multi-valued Attribute"
+    ],
+    "answer": 3
+  }
+]

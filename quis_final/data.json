@@ -1,0 +1,192 @@
+[
+  {
+    "question": "What is rows of a relation known as?",
+    "choices": ["Degree", "Entity", "Tuple", "None"],
+    "answer": 2
+  },
+  {
+    "question": "What is the number of tuples of a relation known as?",
+    "choices": ["Column", "Cardinality", "Entity", "None"],
+    "answer": 1
+  },
+  {
+    "question": "Which is the lowest level of abstraction that describes how the data are actually stored?",
+    "choices": ["Physical", "Abstract", "View", "User"],
+    "answer": 0
+  },
+  {
+    "question": "What is information about data called?",
+    "choices": ["Hyper data", "Tera data", "Meta data", "Relations"],
+    "answer": 2
+  },
+  {
+    "question": "In a database, what is the purpose of the JOIN operation?",
+    "choices": [
+      "To insert new records",
+      "To update existing records",
+      "To retrieve data from multiple tables",
+      "To delete records"
+    ],
+    "answer": 2
+  },
+  {
+    "question": "The uniqueness of each row in a database table is ensured by:",
+    "choices": ["The primary key", "The foreign key", "An index", "A trigger"],
+    "answer": 0
+  },
+  {
+    "question": "Which normal form deals with multivalued dependency?",
+    "choices": ["1NF", "2NF", "3NF", "4NF"],
+    "answer": 3
+  },
+  {
+    "question": "Which normalization form is based on the transitive dependency?",
+    "choices": ["1NF", "2NF", "3NF", "BCNF"],
+    "answer": 2
+  },
+  {
+    "question": "Which of the following is known as minimal super key?",
+    "choices": ["Primary key", "Candidate key", "Foreign key", "None"],
+    "answer": 1
+  },
+  {
+    "question": "Primary key can be?",
+    "choices": ["NULL", "NOT NULL", "Both NULL and NOT NULL", "Depends on situation"],
+    "answer": 1
+  },
+  {
+    "question": "Select the correct foreign key constraint?",
+    "choices": [
+      "Referential integrity",
+      "Entity integrity",
+      "Domain integrity",
+      "None"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "How is ER diagram attribute represented?",
+    "choices": ["Circle", "Ellipse", "Triangle", "Square"],
+    "answer": 1
+  },
+  {
+    "question": "Rectangles in ER diagram represents?",
+    "choices": ["Tables", "Attributes", "Tuples", "Entity sets"],
+    "answer": 3
+  },
+  {
+    "question": "A relationship in an ER model that involves more than two entity types is known as:",
+    "choices": [
+      "A binary relationship",
+      "A ternary relationship",
+      "A Primary relationship",
+      "An associative relationship"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "In an ER diagram, an entity set that does not have sufficient attributes to form a primary key is marked as:",
+    "choices": [
+      "Weak entity",
+      "Strong entity",
+      "Derived entity",
+      "Composite entity"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "Which of the following is the full form of DDL?",
+    "choices": [
+      "Data definition language",
+      "Data derivation language",
+      "Dynamic data language",
+      "Detailed data language"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "To select some particular columns, which of the following command is used?",
+    "choices": ["PROJECTION", "SELECTION", "JOIN", "UNION"],
+    "answer": 0
+  },
+  {
+    "question": "Select the correct advantages of view.",
+    "choices": [
+      "Derived columns",
+      "Data security",
+      "Hiding of complex queries",
+      "All of the above"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "In a many-to-many relationship, which of the following is required to model this relationship in a relational database?",
+    "choices": [
+      "A composite primary key",
+      "A junction table",
+      "A foreign key constraint",
+      "An index"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "In SQL, the JOIN clause is used to:",
+    "choices": [
+      "Combine rows from only two tables based on related columns",
+      "Delete matching rows in two tables",
+      "Update matching columns in two tables",
+      "Combine rows from two or more tables based on related columns"
+    ],
+    "answer": 3
+  },
+  {
+    "question": "What does the term cardinality refer to in the context of databases?",
+    "choices": [
+      "The uniqueness of data in a column",
+      "The number of rows in a table",
+      "The number of tables in a database",
+      "The relationships between tables"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "What is the goal of normalization in database design?",
+    "choices": [
+      "To reduce data redundancy and ensure data integrity",
+      "To increase database size",
+      "To make database security more complex",
+      "To speed up query processing"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "The process of minimizing redundancy and dependency by organizing fields and table relationships is known as:",
+    "choices": [
+      "Denormalization",
+      "Normalization",
+      "Indexing",
+      "Partitioning"
+    ],
+    "answer": 1
+  },
+  {
+    "question": "A database table is noticed to have duplicate rows. Which normalization form is most likely being violated?",
+    "choices": [
+      "First Normal Form (1NF)",
+      "Second Normal Form (2NF)",
+      "Third Normal Form (3NF)",
+      "Boyce-Codd Normal Form (BCNF)"
+    ],
+    "answer": 0
+  },
+  {
+    "question": "During schema refinement, a designer notices that certain attributes depend on other non-primary attributes. Which normal form is not being adhered to?",
+    "choices": [
+      "First Normal Form (1NF)",
+      "Second Normal Form (2NF)",
+      "Third Normal Form (3NF)",
+      "Boyce-Codd Normal Form (BCNF)"
+    ],
+    "answer": 2
+  }
+]
